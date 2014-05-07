@@ -10,6 +10,10 @@
 //                                      //
 //////////////////////////////////////////
 
+#ifdef _MSC_VER
+#    pragma comment(linker, "/subsystem:windows /ENTRY:mainCRTStartup")
+#endif
+
 #include <windows.h>
 
 // Function prototypes.
