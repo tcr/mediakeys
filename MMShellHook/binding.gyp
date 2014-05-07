@@ -11,7 +11,12 @@
 			"type": "executable",
 			"sources": [
 				"win.cpp"
-			]
+			],
+	      'msvs_settings': {
+	        'VCLinkerTool': {
+	          'SubSystem': '1',
+	          'EntryPointSymbol': 'mainCRTStartup',
+	        },
 		}
 	]
 }
