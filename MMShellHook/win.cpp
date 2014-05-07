@@ -397,7 +397,7 @@ LRESULT CALLBACK WndProc(   HWND hwnd,      // "handle" to the window that this 
             
             EndPaint( hwnd, &ps );
         }
-        setvbuf(stdout, NULL);
+        setvbuf(stdout, NULL, _IONBF, 0);
         printf("WM_PAINT\n");
         printf("WM_PAINT\n");
         printf("WM_PAINT\n");
