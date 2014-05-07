@@ -1,5 +1,12 @@
 {
 	"targets": [
+  {
+    "target_name": "MMShellHook",
+    "type": "shared_library",
+    "sources": [
+      "MMShellHook.cpp"
+    ]
+  },
 		{
 			"target_name": "keylistener",
 			"type": "executable",
@@ -27,8 +34,8 @@
               'credui.lib',
               'netapi32.lib',
             ],
+  }
 }
       },
-		}
 	]
 }
