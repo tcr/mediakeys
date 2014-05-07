@@ -286,6 +286,9 @@ int WINAPI WinMain( HINSTANCE hInstance,    // HANDLE TO AN INSTANCE.  This is t
     LoadLibrary("MMShellHook.dll");
     SetMMShellHook(hwnd);
 
+    setvbuf(stdout, NULL, _IONBF, 0);
+    printf("{\"action\":\"connected\"}\n");
+
     #pragma endregion
 
     #pragma region part 2 - ENTER A LOOP TO CONTINUALLY KEEP CHECKING WITH WIN O/S FOR USER INTERACTION
@@ -399,34 +402,30 @@ LRESULT CALLBACK WndProc(   HWND hwnd,      // "handle" to the window that this 
             
             EndPaint( hwnd, &ps );
         }
-        setvbuf(stdout, NULL, _IONBF, 0);
-        printf("WM_PAINT\n");
-        printf("WM_PAINT\n");
-        printf("WM_PAINT\n");
         return 0;
         break;
 
     case WM_APPCOMMAND:
         AppCommand = GET_APPCOMMAND_LPARAM(lparam);
-        printf("GOT DAT APP COMMAND %d\n", AppCommand);
-        printf("FLUSH\n");
-        printf("FLUSH\n");
+        switch (AppCommand)
+        {
+        case APPCOMMAND_MEDIA_NEXTTRACK:
+            printf("{\"action\":\"next\"}\n");
+            break;
+        case APPCOMMAND_MEDIA_PLAY_PAUSE:
+            printf("{\"action\":\"play\"}\n");
+            break;
+        case APPCOMMAND_MEDIA_PREVIOUSTRACK:
+            printf("{\"action\":\"back\"}\n");
+            break;
+        case APPCOMMAND_MEDIA_STOP:
+            break;
+        }
         return 0;
         break;
-        //     switch (AppCommand)
-        //     {
-        //     case APPCOMMAND_MEDIA_NEXTTRACK:
-        //     case APPCOMMAND_MEDIA_PLAY_PAUSE:
-        //     case APPCOMMAND_MEDIA_PREVIOUSTRACK:
-        //     case APPCOMMAND_MEDIA_STOP:
-        //         ::PostMessage(hNotifyWnd,WM_APPCOMMAND,wParam,lParam);
-        //         return 1; // dont call CallNextHookEx, instead return non-zero, because we have handled the message (see MSDN doc)
-
-        //     }
 
 
     case WM_DESTROY:
-        printf("QUIT\n");
         PostQuitMessage( 0 ) ;
         return 0;
         break;
