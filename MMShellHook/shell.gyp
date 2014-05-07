@@ -8,6 +8,7 @@
     ],
       'msvs_settings': {
         'VCLinkerTool': {
+        'EntryPointSymbol': '_DllMainCRTStartup',
             'AdditionalDependencies': [
               'kernel32.lib',
               'gdi32.lib',
