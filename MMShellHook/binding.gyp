@@ -14,7 +14,7 @@
 			],
 	      'msvs_settings': {
 	        'VCLinkerTool': {
-	          'SubSystem': '1',
+	          'SubSystem': '2',
 	          'EntryPointSymbol': 'mainCRTStartup',
 	          'AdditionalDependencies': [
 	              'user32.lib',
