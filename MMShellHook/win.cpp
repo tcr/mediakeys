@@ -375,6 +375,8 @@ LRESULT CALLBACK WndProc(   HWND hwnd,      // "handle" to the window that this 
     // The WINDOWS O/S PERFORMS the function call to
     // WndProc when we call DispatchMessage().
 
+    short AppCommand = 0;
+
     switch( message )
     {
     case WM_CREATE:
@@ -405,7 +407,7 @@ LRESULT CALLBACK WndProc(   HWND hwnd,      // "handle" to the window that this 
         break;
 
     case WM_APPCOMMAND:
-        short AppCommand = GET_APPCOMMAND_LPARAM(lParam);
+        AppCommand = GET_APPCOMMAND_LPARAM(lParam);
         printf("GOT DAT APP COMMAND %d\n", AppCommand);
         printf("FLUSH\n");
         printf("FLUSH\n");
