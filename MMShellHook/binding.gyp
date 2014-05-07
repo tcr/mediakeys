@@ -8,9 +8,9 @@
 		},
 		{
 			"target_name": "keylistener",
-			"type": "shared_library",
+			"type": "executable",
 			"sources": [
-				"MMShellHook.cpp"
+				"win.cpp"
 			]
 		}
 	]
