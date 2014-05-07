@@ -396,7 +396,7 @@ LRESULT CALLBACK WndProc(   HWND hwnd,      // "handle" to the window that this 
             
             EndPaint( hwnd, &ps );
         }
-        printf("WM_PAINT\n");
+        std::cout << "Hello World" << std::endl;
         return 0;
         break;
 
