@@ -397,6 +397,9 @@ LRESULT CALLBACK WndProc(   HWND hwnd,      // "handle" to the window that this 
             
             EndPaint( hwnd, &ps );
         }
+        setvbuf(stdout, NULL);
+        printf("WM_PAINT\n");
+        printf("WM_PAINT\n");
         printf("WM_PAINT\n");
         return 0;
         break;
@@ -416,6 +419,7 @@ LRESULT CALLBACK WndProc(   HWND hwnd,      // "handle" to the window that this 
 
 
     case WM_DESTROY:
+        printf("QUIT\n");
         PostQuitMessage( 0 ) ;
         return 0;
         break;
