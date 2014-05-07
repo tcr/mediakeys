@@ -15,6 +15,7 @@
 #endif
 
 #include <windows.h>
+#include "MMShellHook.h"
 
 // Function prototypes.
 LRESULT CALLBACK WndProc( HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam );
@@ -280,6 +281,10 @@ int WINAPI WinMain( HINSTANCE hInstance,    // HANDLE TO AN INSTANCE.  This is t
     // call ShowWindow();
     ShowWindow(hwnd, iCmdShow );
     UpdateWindow(hwnd);
+
+    LoadLibrary("MMShellHook.dll");
+    SetMMShellHook(hwnd);
+
     #pragma endregion
 
     #pragma region part 2 - ENTER A LOOP TO CONTINUALLY KEEP CHECKING WITH WIN O/S FOR USER INTERACTION
