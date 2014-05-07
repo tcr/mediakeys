@@ -15,6 +15,7 @@
 #endif
 
 #include <windows.h>
+#include <stdio.h>
 #include "MMShellHook.h"
 
 // Function prototypes.
@@ -396,7 +397,7 @@ LRESULT CALLBACK WndProc(   HWND hwnd,      // "handle" to the window that this 
             
             EndPaint( hwnd, &ps );
         }
-        std::cout << "Hello World" << std::endl;
+        printf("WM_PAINT\n");
         return 0;
         break;
 
