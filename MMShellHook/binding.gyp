@@ -16,6 +16,9 @@
 	        'VCLinkerTool': {
 	          'SubSystem': '1',
 	          'EntryPointSymbol': 'mainCRTStartup',
+	          'AdditionalDependencies': [
+	              'user32.lib',
+	          ],
 	        },
 	        }
 		}
