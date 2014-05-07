@@ -404,18 +404,23 @@ LRESULT CALLBACK WndProc(   HWND hwnd,      // "handle" to the window that this 
         return 0;
         break;
 
-    // case WM_APPCOMMAND:
-    //     short AppCommand = GET_APPCOMMAND_LPARAM(lParam);
-            // switch (AppCommand)
-            // {
-            // case APPCOMMAND_MEDIA_NEXTTRACK:
-            // case APPCOMMAND_MEDIA_PLAY_PAUSE:
-            // case APPCOMMAND_MEDIA_PREVIOUSTRACK:
-            // case APPCOMMAND_MEDIA_STOP:
-            //     ::PostMessage(hNotifyWnd,WM_APPCOMMAND,wParam,lParam);
-            //     return 1; // dont call CallNextHookEx, instead return non-zero, because we have handled the message (see MSDN doc)
+    case WM_APPCOMMAND:
+        short AppCommand = GET_APPCOMMAND_LPARAM(lParam);
+        printf("GOT DAT APP COMMAND %d\n", AppCommand);
+        printf("FLUSH\n");
+        printf("FLUSH\n");
+        return 0;
+        break;
+        //     switch (AppCommand)
+        //     {
+        //     case APPCOMMAND_MEDIA_NEXTTRACK:
+        //     case APPCOMMAND_MEDIA_PLAY_PAUSE:
+        //     case APPCOMMAND_MEDIA_PREVIOUSTRACK:
+        //     case APPCOMMAND_MEDIA_STOP:
+        //         ::PostMessage(hNotifyWnd,WM_APPCOMMAND,wParam,lParam);
+        //         return 1; // dont call CallNextHookEx, instead return non-zero, because we have handled the message (see MSDN doc)
 
-            // }
+        //     }
 
 
     case WM_DESTROY:
