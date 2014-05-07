@@ -12,13 +12,11 @@
 			"sources": [
 				"win.cpp"
 			],
-	      'msvs_settings': {
-	        'VCLinkerTool': {
-	          'SubSystem': '2',
-	          'EntryPointSymbol': 'mainCRTStartup',
-	          # 'AdditionalDependencies': [ 'user32.lib', ],
-	        },
-	        }
+			'msvs_settings': {
+        'VCLinkerTool': {
+          'SubSystem': '2'
+        }
+      },
 		}
 	]
 }
