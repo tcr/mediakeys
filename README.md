@@ -1,4 +1,6 @@
-# use
+# mediakeys
+
+Detect "play", "next", and "prev" keys globally in Node.js.
 
 ```
 npm install mediakeys
@@ -19,23 +21,34 @@ mediakeys.on('back', function () {
 })
 ```
 
-## notes
+That easy! To test globally on any platform:
 
 ```
-windows
-
-http://www.codeguru.com/cpp/w-p/system/keyboard/article.php/c5655/Using-Multimedia-Keyboard-Keys-in-Your-Own-Program.htm
-http://yabb.jriver.com/interact/index.php?topic=15649.0;wap2
-
-osx
-
-https://github.com/msfeldstein/MediaKeyHosts
-
-linux
-
-http://bluesock.org/~willkg/blog/dev/gnome_media_keys.html
+$ npm install -g mediakeys
+$ mediakeys
+connected
+play
+next
+back
+...
 ```
 
-## license
+## Source
 
-gotta look these up
+Code for this library is sourced from a few locations:
+
+## Windows
+
+<http://www.codeguru.com/cpp/w-p/system/keyboard/article.php/c5655/Using-Multimedia-Keyboard-Keys-in-Your-Own-Program.htm> (?? licensed)
+
+## OS X
+
+<https://github.com/msfeldstein/MediaKeyHosts> (?? licensed)
+
+### Linux
+
+<https://github.com/Shouqun/node-dbus> (MIT licensed)
+
+## License
+
+All original code licensed under MIT.
