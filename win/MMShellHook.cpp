@@ -150,7 +150,7 @@ LRESULT CALLBACK ShellProc(int nCode, WPARAM wParam, LPARAM lParam)
 			case APPCOMMAND_MEDIA_PREVIOUSTRACK:
 			case APPCOMMAND_MEDIA_STOP:
 				if (::PostMessage(hNotifyWnd,WM_APPCOMMAND,wParam,lParam) == 0) {
-					if (!unHooked) {
+					if (hNotifyWnd != NULL) {
 						UnSetMMShellHook(hNotifyWnd);
 					}
 				}
