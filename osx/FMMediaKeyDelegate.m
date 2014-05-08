@@ -18,11 +18,11 @@
     const char* utf8 = [json UTF8String];
     unsigned long len = strlen(utf8);
     // Write out 4 bytes of the message length, followed by the message.
-    fprintf(stdout, "%c%c%c%c%s",
-            (char) (len & 0xff),
-            (char) ((len>>8) & 0xFF),
-            (char) ((len>>16) & 0xFF),
-            (char) ((len>>24) & 0xFF),
+    fprintf(stdout,
+            // (char) (len & 0xff),
+            // (char) ((len>>8) & 0xFF),
+            // (char) ((len>>16) & 0xFF),
+            // (char) ((len>>24) & 0xFF),
             utf8);
     
     fflush(stdout);
