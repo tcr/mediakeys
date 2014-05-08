@@ -1,0 +1,3 @@
+[submodule "dbus"]
+	path = dbus
+	url = https://github.com/Shouqun/node-dbus.git
