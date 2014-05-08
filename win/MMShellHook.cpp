@@ -139,6 +139,7 @@ DllExport BOOL UnSetMMShellHook(HWND hWnd)
 
 LRESULT CALLBACK ShellProc(int nCode, WPARAM wParam, LPARAM lParam)
 {
+	printf("SHELL\n");
 	// Do we have to handle this message?
 	if (nCode == HSHELL_APPCOMMAND)
 	{
