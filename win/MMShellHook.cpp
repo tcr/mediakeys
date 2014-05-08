@@ -149,7 +149,11 @@ LRESULT CALLBACK ShellProc(int nCode, WPARAM wParam, LPARAM lParam)
 			case APPCOMMAND_MEDIA_PLAY_PAUSE:
 			case APPCOMMAND_MEDIA_PREVIOUSTRACK:
 			case APPCOMMAND_MEDIA_STOP:
-				::PostMessage(hNotifyWnd,WM_APPCOMMAND,wParam,lParam);
+				if (::PostMessage(hNotifyWnd,WM_APPCOMMAND,wParam,lParam) == 0) {
+					if (!unHooked) {
+						UnSetMMShellHook(hNotifyWnd);
+					}
+				}
 				return 1; // dont call CallNextHookEx, instead return non-zero, because we have handled the message (see MSDN doc)
 
 			}
