@@ -1,7 +1,7 @@
 var path = require('path');
 var spawn = require('child_process').spawn;
 
-var proc = spawn(path.resolve('Default/keylistener.exe'), []);
+var proc = spawn(path.resolve('build/Release/keylistener.exe'), []);
 proc.stdout.pipe(process.stdout);
 proc.stderr.pipe(process.stderr);
 proc.on('exit', function (code) {
