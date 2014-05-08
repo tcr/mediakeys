@@ -29,6 +29,7 @@ LRESULT CALLBACK ShellProc (int nCode, WPARAM wParam, LPARAM lParam);
 // The DLL's main procedure
 BOOL WINAPI DllMain (HANDLE hInst, ULONG ul_reason_for_call, LPVOID lpReserved)
 {
+	printf("reason: %d\n", ul_reason_for_call);
 	// Find out why we're being called
 	switch (ul_reason_for_call)
 	{
@@ -39,6 +40,7 @@ BOOL WINAPI DllMain (HANDLE hInst, ULONG ul_reason_for_call, LPVOID lpReserved)
 		_RPT0(_CRT_WARN, "MMShellHook : Hook DLL loaded\n");
 #endif
 #endif
+		printf("save\n");
 		// Save the instance handle
 		hInstance = (HINSTANCE)hInst;
 		// ALWAYS return TRUE to avoid breaking unhookable applications!!!
