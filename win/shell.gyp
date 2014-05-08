@@ -2,12 +2,13 @@
 	"targets": [
   {
     "target_name": "MMShellHook",
-    "type": "shared_library",
+    "type": "static_library",
     "sources": [
       "MMShellHook.cpp"
     ],
       'msvs_settings': {
         'VCLinkerTool': {
+        'EntryPointSymbol': '_DllMainCRTStartup',
             'AdditionalDependencies': [
               'kernel32.lib',
               'gdi32.lib',
@@ -34,9 +35,6 @@
 			"sources": [
 				"win.cpp"
 			],
-      "dependencies": [
-        "MMShellHook"
-      ],
 			'msvs_settings': {
         'VCLinkerTool': {
           'SubSystem': 2,
