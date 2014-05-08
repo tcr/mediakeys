@@ -2,7 +2,7 @@
 	"targets": [
   {
     "target_name": "MMShellHook",
-    "type": "static_library",
+    "type": "shared_library",
     "sources": [
       "MMShellHook.cpp"
     ],

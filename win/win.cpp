@@ -287,10 +287,12 @@ int WINAPI WinMain( HINSTANCE hInstance,    // HANDLE TO AN INSTANCE.  This is t
 
     printf("loading...\n");
     HINSTANCE dllHandle = LoadLibrary("MMShellHook.dll");
-    printf("ret %p\n", dllHandle);
-    SetMMShellHookType SetMMShellHook = (SetMMShellHookType) GetProcAddress(dllHandle, "SetMMShellHook");
-    int statshook = SetMMShellHook(hwnd);
-    printf("WHAT %d\n", statshook);
+    if (dllHandle != NULL) {
+        printf("ret %p\n", dllHandle);
+        SetMMShellHookType SetMMShellHook = (SetMMShellHookType) GetProcAddress(dllHandle, "SetMMShellHook");
+        int statshook = SetMMShellHook(hwnd);
+        printf("WHAT %d\n", statshook);
+    }
 
     setvbuf(stdout, NULL, _IONBF, 0);
     printf("{\"action\":\"connected\"}\n");
