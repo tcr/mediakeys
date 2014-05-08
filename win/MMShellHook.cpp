@@ -6,6 +6,7 @@
 #include <tchar.h>
 #include <windows.h>
 #include <winuser.h>
+#include <stdio.h>
 
 #include <crtdbg.h>
 /////////////////////////////////////////////////////////////////////////////
