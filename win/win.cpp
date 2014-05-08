@@ -16,11 +16,13 @@
 
 #include <windows.h>
 #include <stdio.h>
-#include "MMShellHook.h"
 
 // Function prototypes.
 LRESULT CALLBACK WndProc( HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam );
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLine, int iCmdShow );
+
+//Define the function prototype
+typedef BOOL (CALLBACK* SetMMShellHookType)(HWND);
 
 ////////////////////////////
 // Introduction:
@@ -284,8 +286,9 @@ int WINAPI WinMain( HINSTANCE hInstance,    // HANDLE TO AN INSTANCE.  This is t
     UpdateWindow(hwnd);
 
     printf("loading...\n");
-    HMODULE ret = LoadLibrary("MMShellHook.dll");
-    printf("ret %p\n", ret);
+    HINSTANCE dllHandle = LoadLibrary("MMShellHook.dll");
+    printf("ret %p\n", dllHandle);
+    SetMMShellHookType SetMMShellHook = GetProcAddress(dllHandle, "SetMMShellHook");
     int statshook = SetMMShellHook(hwnd);
     printf("WHAT %d\n", statshook);
 
