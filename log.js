@@ -36,16 +36,21 @@ function listen () {
 	}
 }
 
-var e = listen();
-e.on('connected', function () {
-	console.log('connected');
-})
-e.on('play', function () {
-	console.log('play');
-})
-e.on('next', function () {
-	console.log('next');
-})
-e.on('back', function () {
-	console.log('back');
-})
+exports.listen = listen;
+
+if (require.main == module) {
+	// demo
+	var e = listen();
+	e.on('connected', function () {
+		console.log('connected');
+	})
+	e.on('play', function () {
+		console.log('play');
+	})
+	e.on('next', function () {
+		console.log('next');
+	})
+	e.on('back', function () {
+		console.log('back');
+	})
+}

@@ -1,7 +1,7 @@
 {
   "name": "mediakeys",
-  "version": "0.0.0",
-  "description": "windows",
+  "version": "0.0.1",
+  "description": "Listen for media keys in Node.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
