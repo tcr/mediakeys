@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/tcr/mediakeys/issues"
   },
-  "homepage": "https://github.com/tcr/mediakeys"
+  "homepage": "https://github.com/tcr/mediakeys",
+  "dependencies": {
+    "bindings": "~1.2.0"
+  }
 }

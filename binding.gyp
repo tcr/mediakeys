@@ -5,9 +5,18 @@
 			"sources": [
 				"dummy.cc"
 			],
-			"dependencies": [
-				"win/shell.gyp:keylistener",
-				"win/shell.gyp:MMShellHook",
+			"conditions": [
+				['OS=="win"', {
+					"dependencies": [
+						"win/shell.gyp:keylistener",
+						"win/shell.gyp:MMShellHook",
+					]
+				}],
+				['OS=="mac"', {
+					"dependencies": [
+						"osx/osx.gyp:keylistener",
+					]
+				}],
 			]
 		}
 	]
