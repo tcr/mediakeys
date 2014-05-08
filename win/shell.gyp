@@ -34,9 +34,6 @@
 			"sources": [
 				"win.cpp"
 			],
-      "dependencies": [
-        "MMShellHook"
-      ],
 			'msvs_settings': {
         'VCLinkerTool': {
           'SubSystem': 2,
