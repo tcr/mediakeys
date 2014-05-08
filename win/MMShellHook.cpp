@@ -60,18 +60,22 @@ BOOL WINAPI DllMain (HANDLE hInst, ULONG ul_reason_for_call, LPVOID lpReserved)
 
 // Add the new hook
 
+#include <stdio.h>
 DllExport BOOL SetMMShellHook(HWND hWnd)
 {
 
 	// Don't add the hook if the window ID is NULL
+	printf("1\n");
 	if (hWnd == NULL)
 		return FALSE;
 	
 	// Don't add a hook if there is already one added
+	printf("2\n");
 	if (hNotifyWnd != NULL)
 		return FALSE;
 
 	// Add the ShellProc hook
+	printf("3\n");
 	hShellHook = SetWindowsHookEx(
 					WH_SHELL,					// Hook in before msg reaches app
 					(HOOKPROC) ShellProc,			// Hook procedure
@@ -83,7 +87,7 @@ DllExport BOOL SetMMShellHook(HWND hWnd)
 	// Check that it worked
 	if (hShellHook != NULL)
 	{
-
+printf("4\n");
 		hNotifyWnd = hWnd;						// Save the WinRFB window handle
 
 #ifdef _MSC_VER
@@ -91,6 +95,7 @@ DllExport BOOL SetMMShellHook(HWND hWnd)
 #endif
 		return TRUE;
 	}
+	printf("5\n");
 	// The hook failed, so return an error code
 	return FALSE;
 }
