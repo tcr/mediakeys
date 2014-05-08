@@ -6,8 +6,8 @@
 				"dummy.cc"
 			],
 			"dependencies": [
-				"shell.gyp:keylistener",
-				"shell.gyp:MMShellHook",
+				"win/shell.gyp:keylistener",
+				"win/shell.gyp:MMShellHook",
 			]
 		}
 	]
