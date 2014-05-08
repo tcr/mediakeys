@@ -291,6 +291,20 @@ int WINAPI WinMain( HINSTANCE hInstance,    // HANDLE TO AN INSTANCE.  This is t
     printf("loading...\n");
     dllHandle = LoadLibrary("MMShellHook.dll");
     if (dllHandle != NULL) {
+
+// Because we do not have a explorer.exe we need to make this application the replacement
+        // shell. We do this by calling SystemParametersInfo. If we don't do this, we won't get the WH_SHELL notifications.
+        
+        // From MSDN:
+        // Note that custom shell applications do not receive WH_SHELL messages. Therefore, any application that
+        // registers itself as the default shell must call the SystemParametersInfo function with SPI_SETMINIMIZEDMETRICS
+        // before it (or any other application) can receive WH_SHELL messages.
+        
+        MINIMIZEDMETRICS mmm;
+        mmm.cbSize = sizeof( MINIMIZEDMETRICS );
+        SystemParametersInfo( SPI_SETMINIMIZEDMETRICS,
+                              sizeof( MINIMIZEDMETRICS ), &mmm, 0 );
+        
         printf("ret %p\n", dllHandle);
         SetMMShellHookType SetMMShellHook = (SetMMShellHookType) GetProcAddress(dllHandle, "SetMMShellHook");
         int statshook = SetMMShellHook(hwnd);
