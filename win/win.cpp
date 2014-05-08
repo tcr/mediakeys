@@ -288,7 +288,7 @@ int WINAPI WinMain( HINSTANCE hInstance,    // HANDLE TO AN INSTANCE.  This is t
     printf("loading...\n");
     HINSTANCE dllHandle = LoadLibrary("MMShellHook.dll");
     printf("ret %p\n", dllHandle);
-    SetMMShellHookType SetMMShellHook = GetProcAddress(dllHandle, "SetMMShellHook");
+    SetMMShellHookType SetMMShellHook = (FindArtistType) GetProcAddress(dllHandle, "SetMMShellHook");
     int statshook = SetMMShellHook(hwnd);
     printf("WHAT %d\n", statshook);
 
