@@ -1,4 +1,4 @@
-var DBus = require('../');
+var DBus = require('dbus');
 
 var dbus = new DBus();
 
