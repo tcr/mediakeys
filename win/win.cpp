@@ -284,7 +284,8 @@ int WINAPI WinMain( HINSTANCE hInstance,    // HANDLE TO AN INSTANCE.  This is t
     UpdateWindow(hwnd);
 
     LoadLibrary("MMShellHook.dll");
-    SetMMShellHook(hwnd);
+    int statshook = SetMMShellHook(hwnd);
+    printf("WHAT %d\n", statshook);
 
     setvbuf(stdout, NULL, _IONBF, 0);
     printf("{\"action\":\"connected\"}\n");
