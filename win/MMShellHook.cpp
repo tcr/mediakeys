@@ -12,7 +12,8 @@
 /////////////////////////////////////////////////////////////////////////////
 // Storage for the global data in the DLL
 
-#pragma data_seg(".shared")
+#pragma comment(linker, "/section:HOOKDAT,RWS") 
+#pragma data_seg( "HOOKDAT" )
 HWND hNotifyWnd = NULL;
 HHOOK hShellHook = NULL;							// Handle to the Shell hook
 int randocount = 0;
