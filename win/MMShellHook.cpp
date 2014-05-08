@@ -28,7 +28,7 @@ LRESULT CALLBACK ShellProc (int nCode, WPARAM wParam, LPARAM lParam);
 
 
 // The DLL's main procedure
-BOOL WINAPI DllMain (HANDLE hInst, ULONG ul_reason_for_call, LPVOID lpReserved)
+extern "C" BOOL WINAPI DllMain (HANDLE hInst, DWORD ul_reason_for_call, LPVOID lpReserved)
 {
 	printf("reason: %d\n", ul_reason_for_call);
 	// Find out why we're being called
