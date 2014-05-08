@@ -75,7 +75,7 @@ DllExport BOOL SetMMShellHook(HWND hWnd)
 		return FALSE;
 
 	// Add the ShellProc hook
-	printf("3\n");
+	printf("3 %p\n", hInstance);
 	hShellHook = SetWindowsHookEx(
 					WH_SHELL,					// Hook in before msg reaches app
 					(HOOKPROC) ShellProc,			// Hook procedure
