@@ -162,3 +162,5 @@ LRESULT CALLBACK ShellProc(int nCode, WPARAM wParam, LPARAM lParam)
 	// Call the next handler in the chain
     return CallNextHookEx (hShellHook, nCode, wParam, lParam);
 }
+
+extern "C"{ __declspec (dllexport) BOOL APIENTRY DllMain (HINSTANCE,DWORD, LPVOID); }
