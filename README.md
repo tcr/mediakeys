@@ -6,6 +6,8 @@ Detect "play", "next", and "prev" keys globally in Node.js.
 npm install mediakeys
 ```
 
+(Linux requires `apt-get install dbus`, dbus-devel, or equivalent.)
+
 then
 
 ```

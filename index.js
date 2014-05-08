@@ -28,7 +28,7 @@ function runProgram (cmd) {
 function listenDbus () {
 	var e = new EventEmitter();
 
-	var DBus = require('./dbus');
+	var DBus = require('./dbus/lib/dbus');
 	var dbus = new DBus();
 	var bus = dbus.getBus('session');
 	bus.getInterface('org.gnome.SettingsDaemon', '/org/gnome/SettingsDaemon/MediaKeys', 'org.gnome.SettingsDaemon.MediaKeys', function(err, iface) {
