@@ -23,6 +23,9 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLin
 
 //Define the function prototype
 typedef BOOL (CALLBACK* SetMMShellHookType)(HWND);
+typedef BOOL (CALLBACK* UnSetMMShellHookType)(HWND);
+
+HINSTANCE dllHandle;
 
 ////////////////////////////
 // Introduction:
@@ -286,7 +289,7 @@ int WINAPI WinMain( HINSTANCE hInstance,    // HANDLE TO AN INSTANCE.  This is t
     UpdateWindow(hwnd);
 
     printf("loading...\n");
-    HINSTANCE dllHandle = LoadLibrary("MMShellHook.dll");
+    dllHandle = LoadLibrary("MMShellHook.dll");
     if (dllHandle != NULL) {
         printf("ret %p\n", dllHandle);
         SetMMShellHookType SetMMShellHook = (SetMMShellHookType) GetProcAddress(dllHandle, "SetMMShellHook");
@@ -434,6 +437,11 @@ LRESULT CALLBACK WndProc(   HWND hwnd,      // "handle" to the window that this 
 
 
     case WM_DESTROY:
+        if (dllHandle != NULL) {
+            UnSetMMShellHookType UnSetMMShellHook = (UnSetMMShellHookType) GetProcAddress(dllHandle, "UnSetMMShellHook");
+            UnSetMMShellHook(hwnd);
+        }
+
         PostQuitMessage( 0 ) ;
         return 0;
         break;
