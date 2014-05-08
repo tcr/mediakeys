@@ -139,7 +139,7 @@ DllExport BOOL UnSetMMShellHook(HWND hWnd)
 
 LRESULT CALLBACK ShellProc(int nCode, WPARAM wParam, LPARAM lParam)
 {
-	printf("SHELL\n");
+	printf("SHELL %d:%d %p\n", nCode, HSHELL_APPCOMMAND, hNotifyWnd);
 	// Do we have to handle this message?
 	if (nCode == HSHELL_APPCOMMAND)
 	{
@@ -147,12 +147,14 @@ LRESULT CALLBACK ShellProc(int nCode, WPARAM wParam, LPARAM lParam)
 		if (hNotifyWnd != NULL)
 		{
 			short AppCommand = GET_APPCOMMAND_LPARAM(lParam);
+				printf("CODE %d\n", AppCommand);
 			switch (AppCommand)
 			{
 			case APPCOMMAND_MEDIA_NEXTTRACK:
 			case APPCOMMAND_MEDIA_PLAY_PAUSE:
 			case APPCOMMAND_MEDIA_PREVIOUSTRACK:
 			case APPCOMMAND_MEDIA_STOP:
+			printf("params %d %d\n", wParam, lParam);
 				::PostMessage(hNotifyWnd,WM_APPCOMMAND,wParam,lParam);
 				return 1; // dont call CallNextHookEx, instead return non-zero, because we have handled the message (see MSDN doc)
 
