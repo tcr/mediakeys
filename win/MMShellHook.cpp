@@ -15,6 +15,7 @@
 #pragma data_seg(".shared")
 HWND hNotifyWnd = NULL;
 HHOOK hShellHook = NULL;							// Handle to the Shell hook
+int randocount = 0;
 #pragma data_seg( )
 /////////////////////////////////////////////////////////////////////////////
 // Per-instance DLL variables
@@ -139,6 +140,7 @@ DllExport BOOL UnSetMMShellHook(HWND hWnd)
 
 LRESULT CALLBACK ShellProc(int nCode, WPARAM wParam, LPARAM lParam)
 {
+	printf("randocount %d\n", randocount++);
 	// printf("SHELL %d:%d %p\n", nCode, HSHELL_APPCOMMAND, hNotifyWnd);
 	// Do we have to handle this message?
 	if (nCode == HSHELL_APPCOMMAND)
@@ -154,7 +156,6 @@ LRESULT CALLBACK ShellProc(int nCode, WPARAM wParam, LPARAM lParam)
 			case APPCOMMAND_MEDIA_PLAY_PAUSE:
 			case APPCOMMAND_MEDIA_PREVIOUSTRACK:
 			case APPCOMMAND_MEDIA_STOP:
-			// printf("params %d %d\n", wParam, lParam);
 				::PostMessage(hNotifyWnd,WM_APPCOMMAND,wParam,lParam);
 				return 1; // dont call CallNextHookEx, instead return non-zero, because we have handled the message (see MSDN doc)
 
