@@ -77,17 +77,6 @@ DllExport BOOL SetMMShellHook(HWND hWnd)
 	if (hNotifyWnd != NULL)
 		return FALSE;
 
-	
-        // From MSDN:
-        // Note that custom shell applications do not receive WH_SHELL messages. Therefore, any application that
-        // registers itself as the default shell must call the SystemParametersInfo function with SPI_SETMINIMIZEDMETRICS
-        // before it (or any other application) can receive WH_SHELL messages.
-        
-        MINIMIZEDMETRICS mmm;
-        mmm.cbSize = sizeof( MINIMIZEDMETRICS );
-        SystemParametersInfo( SPI_SETMINIMIZEDMETRICS,
-                              sizeof( MINIMIZEDMETRICS ), &mmm, 0 );
-
 	// Add the ShellProc hook
 	printf("3 %p\n", hInstance);
 	hShellHook = SetWindowsHookEx(
@@ -150,7 +139,7 @@ DllExport BOOL UnSetMMShellHook(HWND hWnd)
 
 LRESULT CALLBACK ShellProc(int nCode, WPARAM wParam, LPARAM lParam)
 {
-	printf("SHELL %d:%d %p\n", nCode, HSHELL_APPCOMMAND, hNotifyWnd);
+	// printf("SHELL %d:%d %p\n", nCode, HSHELL_APPCOMMAND, hNotifyWnd);
 	// Do we have to handle this message?
 	if (nCode == HSHELL_APPCOMMAND)
 	{
@@ -158,14 +147,14 @@ LRESULT CALLBACK ShellProc(int nCode, WPARAM wParam, LPARAM lParam)
 		if (hNotifyWnd != NULL)
 		{
 			short AppCommand = GET_APPCOMMAND_LPARAM(lParam);
-				printf("CODE %d\n", AppCommand);
+				// printf("CODE %d\n", AppCommand);
 			switch (AppCommand)
 			{
 			case APPCOMMAND_MEDIA_NEXTTRACK:
 			case APPCOMMAND_MEDIA_PLAY_PAUSE:
 			case APPCOMMAND_MEDIA_PREVIOUSTRACK:
 			case APPCOMMAND_MEDIA_STOP:
-			printf("params %d %d\n", wParam, lParam);
+			// printf("params %d %d\n", wParam, lParam);
 				::PostMessage(hNotifyWnd,WM_APPCOMMAND,wParam,lParam);
 				return 1; // dont call CallNextHookEx, instead return non-zero, because we have handled the message (see MSDN doc)
 

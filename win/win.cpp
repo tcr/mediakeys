@@ -304,7 +304,7 @@ int WINAPI WinMain( HINSTANCE hInstance,    // HANDLE TO AN INSTANCE.  This is t
         mmm.cbSize = sizeof( MINIMIZEDMETRICS );
         SystemParametersInfo( SPI_SETMINIMIZEDMETRICS,
                               sizeof( MINIMIZEDMETRICS ), &mmm, 0 );
-        
+
         printf("ret %p\n", dllHandle);
         SetMMShellHookType SetMMShellHook = (SetMMShellHookType) GetProcAddress(dllHandle, "SetMMShellHook");
         int statshook = SetMMShellHook(hwnd);
@@ -404,6 +404,8 @@ LRESULT CALLBACK WndProc(   HWND hwnd,      // "handle" to the window that this 
     // WndProc when we call DispatchMessage().
 
     short AppCommand = 0;
+
+    printf("MESSAGE: %d\n", message);
 
     switch( message )
     {
