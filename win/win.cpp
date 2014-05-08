@@ -440,6 +440,7 @@ LRESULT CALLBACK WndProc(   HWND hwnd,      // "handle" to the window that this 
             printf("{\"action\":\"next\"}\n");
             break;
         case APPCOMMAND_MEDIA_PLAY_PAUSE:
+    SetWindowText(hwnd, "PLAY");
             printf("{\"action\":\"play\"}\n");
             break;
         case APPCOMMAND_MEDIA_PREVIOUSTRACK:
