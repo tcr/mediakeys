@@ -1,7 +1,7 @@
 {
   "name": "mediakeys",
   "version": "0.0.2",
-  "description": "Listen for media keys in Node.",
+  "description": "Cross-platform library to listen for media keys (play/next/back).",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
