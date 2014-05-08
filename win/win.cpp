@@ -287,7 +287,7 @@ int WINAPI WinMain( HINSTANCE hInstance,    // HANDLE TO AN INSTANCE.  This is t
     // Next, SHOW and PAINT the window!
     // You won't see the window if you DO NOT
     // call ShowWindow();
-    // ShowWindow(hwnd, iCmdShow );
+    ShowWindow(hwnd, iCmdShow );
     UpdateWindow(hwnd);
 
     // printf("loading...\n");
