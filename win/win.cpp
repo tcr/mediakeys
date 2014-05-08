@@ -285,7 +285,7 @@ int WINAPI WinMain( HINSTANCE hInstance,    // HANDLE TO AN INSTANCE.  This is t
 
     LoadLibrary("MMShellHook.dll");
 
-SetWindowsHookEx( WH_SHELL, SetMMShellHook, AfxGetInstanceHandle(), 0);
+SetWindowsHookEx( WH_SHELL, SetMMShellHook, hInstance, 0);
 
     setvbuf(stdout, NULL, _IONBF, 0);
     printf("{\"action\":\"connected\"}\n");
