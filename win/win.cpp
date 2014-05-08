@@ -405,7 +405,7 @@ LRESULT CALLBACK WndProc(   HWND hwnd,      // "handle" to the window that this 
 
     short AppCommand = 0;
 
-    printf("MESSAGE: %d\n", message);
+    // printf("MESSAGE: %d\n", message);
 
     switch( message )
     {
