@@ -1,6 +1,6 @@
 {
   "name": "mediakeys",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Cross-platform library to listen for media keys (play/next/back).",
   "main": "index.js",
   "bin": {
@@ -13,8 +13,8 @@
     "type": "git",
     "url": "https://github.com/tcr/mediakeys.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Tim Cameron Ryan <tim@timryan.org>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/tcr/mediakeys/issues"
   },
@@ -22,8 +22,5 @@
   "dependencies": {
     "bindings": "~1.2.0",
     "newline-json": "0.0.4"
-  },
-  "optionalDependencies": {
-    "dbus": "~0.2.9"
   }
 }

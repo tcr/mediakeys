@@ -17,7 +17,7 @@
 						"osx/osx.gyp:keylistener",
 					]
 				}],
-				['OS=="linux", {
+				['OS=="linux"', {
 					"dependencies": [
 						"dbus/binding.gyp:dbus"
 					]
