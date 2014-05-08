@@ -77,6 +77,17 @@ DllExport BOOL SetMMShellHook(HWND hWnd)
 	if (hNotifyWnd != NULL)
 		return FALSE;
 
+	
+        // From MSDN:
+        // Note that custom shell applications do not receive WH_SHELL messages. Therefore, any application that
+        // registers itself as the default shell must call the SystemParametersInfo function with SPI_SETMINIMIZEDMETRICS
+        // before it (or any other application) can receive WH_SHELL messages.
+        
+        MINIMIZEDMETRICS mmm;
+        mmm.cbSize = sizeof( MINIMIZEDMETRICS );
+        SystemParametersInfo( SPI_SETMINIMIZEDMETRICS,
+                              sizeof( MINIMIZEDMETRICS ), &mmm, 0 );
+
 	// Add the ShellProc hook
 	printf("3 %p\n", hInstance);
 	hShellHook = SetWindowsHookEx(
