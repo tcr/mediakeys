@@ -282,16 +282,7 @@ int WINAPI WinMain( HINSTANCE hInstance,    // HANDLE TO AN INSTANCE.  This is t
     //     NULL, NULL,             // nothing and nothing (ignore to start out)
     //     hInstance, NULL );      // hInstance -- (see glossary), nothing
 
-    static const char* class_name = "DUMMY_CLASS";
-    WNDCLASSEX wx = {};
-    wx.cbSize = sizeof(WNDCLASSEX);
-    wx.lpfnWndProc = pWndProc;        // function which will handle messages
-    wx.hInstance = current_instance;
-    wx.lpszClassName = class_name;
-    HWND hwnd = NULL;
-    if ( RegisterClassEx(&wx) ) {
-      hwnd = CreateWindowEx( 0, class_name, "dummy_name", 0, 0, 0, 0, 0, HWND_MESSAGE, NULL, NULL, NULL );
-    }
+    HWND hwnd = CreateWindowEx( 0, TEXT("Philip"), "dummy_name", 0, 0, 0, 0, 0, HWND_MESSAGE, NULL, NULL, NULL );
 
     // Next, SHOW and PAINT the window!
     // You won't see the window if you DO NOT
