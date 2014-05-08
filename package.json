@@ -1,0 +1,19 @@
+{
+  "name": "mediakeys",
+  "version": "0.0.0",
+  "description": "windows",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tcr/mediakeys.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tcr/mediakeys/issues"
+  },
+  "homepage": "https://github.com/tcr/mediakeys"
+}
