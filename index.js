@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var path = require('path');
 var spawn = require('child_process').spawn;
 var EventEmitter = require('events').EventEmitter;

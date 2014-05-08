@@ -1,8 +1,11 @@
 {
   "name": "mediakeys",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Cross-platform library to listen for media keys (play/next/back).",
   "main": "index.js",
+  "bin": {
+    "mediakeys": "./index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
