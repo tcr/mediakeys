@@ -284,7 +284,8 @@ int WINAPI WinMain( HINSTANCE hInstance,    // HANDLE TO AN INSTANCE.  This is t
     UpdateWindow(hwnd);
 
     printf("loading...\n");
-    LoadLibraryA("MMShellHook.dll");
+    WINAPI ret = LoadLibrary("MMShellHook.dll");
+    printf("ret %p\n", ret);
     int statshook = SetMMShellHook(hwnd);
     printf("WHAT %d\n", statshook);
 
