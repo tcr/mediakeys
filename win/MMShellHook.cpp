@@ -32,7 +32,6 @@ LRESULT CALLBACK ShellProc (int nCode, WPARAM wParam, LPARAM lParam);
 // The DLL's main procedure
 extern "C" BOOL WINAPI DllMain (HANDLE hInst, DWORD ul_reason_for_call, LPVOID lpReserved)
 {
-	printf("reason: %d\n", ul_reason_for_call);
 	// Find out why we're being called
 	switch (ul_reason_for_call)
 	{
@@ -43,7 +42,6 @@ extern "C" BOOL WINAPI DllMain (HANDLE hInst, DWORD ul_reason_for_call, LPVOID l
 		_RPT0(_CRT_WARN, "MMShellHook : Hook DLL loaded\n");
 #endif
 #endif
-		printf("save\n");
 		// Save the instance handle
 		hInstance = (HINSTANCE)hInst;
 		// ALWAYS return TRUE to avoid breaking unhookable applications!!!
@@ -70,17 +68,14 @@ DllExport BOOL SetMMShellHook(HWND hWnd)
 {
 
 	// Don't add the hook if the window ID is NULL
-	printf("1\n");
 	if (hWnd == NULL)
 		return FALSE;
 	
 	// Don't add a hook if there is already one added
-	printf("2\n");
 	if (hNotifyWnd != NULL)
 		return FALSE;
 
 	// Add the ShellProc hook
-	printf("3 %p\n", hInstance);
 	hShellHook = SetWindowsHookEx(
 					WH_SHELL,					// Hook in before msg reaches app
 					(HOOKPROC) ShellProc,			// Hook procedure
@@ -92,7 +87,6 @@ DllExport BOOL SetMMShellHook(HWND hWnd)
 	// Check that it worked
 	if (hShellHook != NULL)
 	{
-printf("4\n");
 		hNotifyWnd = hWnd;						// Save the WinRFB window handle
 
 #ifdef _MSC_VER
@@ -100,7 +94,6 @@ printf("4\n");
 #endif
 		return TRUE;
 	}
-	printf("5\n");
 	// The hook failed, so return an error code
 	return FALSE;
 }
@@ -141,7 +134,6 @@ DllExport BOOL UnSetMMShellHook(HWND hWnd)
 
 LRESULT CALLBACK ShellProc(int nCode, WPARAM wParam, LPARAM lParam)
 {
-	printf("randocount %d\n", randocount++);
 	// printf("SHELL %d:%d %p\n", nCode, HSHELL_APPCOMMAND, hNotifyWnd);
 	// Do we have to handle this message?
 	if (nCode == HSHELL_APPCOMMAND)

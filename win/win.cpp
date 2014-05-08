@@ -288,7 +288,7 @@ int WINAPI WinMain( HINSTANCE hInstance,    // HANDLE TO AN INSTANCE.  This is t
     ShowWindow(hwnd, iCmdShow );
     UpdateWindow(hwnd);
 
-    printf("loading...\n");
+    // printf("loading...\n");
     dllHandle = LoadLibrary("MMShellHook.dll");
     if (dllHandle != NULL) {
 
@@ -305,10 +305,10 @@ int WINAPI WinMain( HINSTANCE hInstance,    // HANDLE TO AN INSTANCE.  This is t
         SystemParametersInfo( SPI_SETMINIMIZEDMETRICS,
                               sizeof( MINIMIZEDMETRICS ), &mmm, 0 );
 
-        printf("ret %p\n", dllHandle);
+        // printf("ret %p\n", dllHandle);
         SetMMShellHookType SetMMShellHook = (SetMMShellHookType) GetProcAddress(dllHandle, "SetMMShellHook");
         int statshook = SetMMShellHook(hwnd);
-        printf("WHAT %d\n", statshook);
+        // printf("WHAT %d\n", statshook);
     }
 
     setvbuf(stdout, NULL, _IONBF, 0);
@@ -440,7 +440,6 @@ LRESULT CALLBACK WndProc(   HWND hwnd,      // "handle" to the window that this 
             printf("{\"action\":\"next\"}\n");
             break;
         case APPCOMMAND_MEDIA_PLAY_PAUSE:
-    SetWindowText(hwnd, "PLAY");
             printf("{\"action\":\"play\"}\n");
             break;
         case APPCOMMAND_MEDIA_PREVIOUSTRACK:
