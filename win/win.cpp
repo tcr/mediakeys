@@ -262,30 +262,41 @@ int WINAPI WinMain( HINSTANCE hInstance,    // HANDLE TO AN INSTANCE.  This is t
     // Most of the time, you would want to save
     // this HWND into a global variable,
     // so you wouldn't lose it later.
-    HWND hwnd = CreateWindow(
-        TEXT("Philip"),         // THIS IS THE LINK
-                                // to the WNDCLASS structure that
-                                // we created earlier.
+    // HWND hwnd = CreateWindow(
+    //     TEXT("Philip"),         // THIS IS THE LINK
+    //                             // to the WNDCLASS structure that
+    //                             // we created earlier.
 
-        TEXT("window's title!"),// appears in title of window
+    //     TEXT("window's title!"),// appears in title of window
 
-        WS_OVERLAPPEDWINDOW,    // STYLE of window.  WS_OVERLAPPEDWINDOW just means
-                                // the window we create should have a few common features
-                                // like a minimize box, a maximize box, and it should
-                                // be resizeable by dragging the "thick frame" around
-                                // the window. There are other styles
-                                // and they all start with WS_.  Check it out in the
-                                // autocomplete by typing WS_ THEN PRESSING CTRL+SPACE
-                                // to make the autocomplete window come up.
-        10, 10,                 // x, y start coordinates of window
-        200, 200,               // width, height of window
-        NULL, NULL,             // nothing and nothing (ignore to start out)
-        hInstance, NULL );      // hInstance -- (see glossary), nothing
+    //     WS_OVERLAPPEDWINDOW,    // STYLE of window.  WS_OVERLAPPEDWINDOW just means
+    //                             // the window we create should have a few common features
+    //                             // like a minimize box, a maximize box, and it should
+    //                             // be resizeable by dragging the "thick frame" around
+    //                             // the window. There are other styles
+    //                             // and they all start with WS_.  Check it out in the
+    //                             // autocomplete by typing WS_ THEN PRESSING CTRL+SPACE
+    //                             // to make the autocomplete window come up.
+    //     10, 10,                 // x, y start coordinates of window
+    //     200, 200,               // width, height of window
+    //     NULL, NULL,             // nothing and nothing (ignore to start out)
+    //     hInstance, NULL );      // hInstance -- (see glossary), nothing
+
+    static const char* class_name = "DUMMY_CLASS";
+    WNDCLASSEX wx = {};
+    wx.cbSize = sizeof(WNDCLASSEX);
+    wx.lpfnWndProc = pWndProc;        // function which will handle messages
+    wx.hInstance = current_instance;
+    wx.lpszClassName = class_name;
+    HWND hwnd = NULL;
+    if ( RegisterClassEx(&wx) ) {
+      hwnd = CreateWindowEx( 0, class_name, "dummy_name", 0, 0, 0, 0, 0, HWND_MESSAGE, NULL, NULL, NULL );
+    }
 
     // Next, SHOW and PAINT the window!
     // You won't see the window if you DO NOT
     // call ShowWindow();
-    ShowWindow(hwnd, iCmdShow );
+    // ShowWindow(hwnd, iCmdShow );
     UpdateWindow(hwnd);
 
     // printf("loading...\n");
@@ -423,9 +434,9 @@ LRESULT CALLBACK WndProc(   HWND hwnd,      // "handle" to the window that this 
             hdc = BeginPaint( hwnd, &ps );
 
             // draw a circle and a 2 squares
-            Ellipse( hdc, 20, 20, 160, 160 );
-            Rectangle( hdc, 50, 50, 90, 90 );
-            Rectangle( hdc, 100, 50, 140, 90 );
+            // Ellipse( hdc, 20, 20, 160, 160 );
+            // Rectangle( hdc, 50, 50, 90, 90 );
+            // Rectangle( hdc, 100, 50, 140, 90 );
             
             EndPaint( hwnd, &ps );
         }
