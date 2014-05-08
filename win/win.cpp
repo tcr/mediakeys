@@ -283,6 +283,8 @@ int WINAPI WinMain( HINSTANCE hInstance,    // HANDLE TO AN INSTANCE.  This is t
     ShowWindow(hwnd, iCmdShow );
     UpdateWindow(hwnd);
 
+    printf("loading...\n");
+    LoadLibrary("MMShellHook.dll");
     int statshook = SetMMShellHook(hwnd);
     printf("WHAT %d\n", statshook);
 
