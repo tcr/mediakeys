@@ -9,6 +9,7 @@
 				'-framework', 'Foundation',
 				'-framework', 'CoreData',
 				'-framework', 'Cocoa',
+				'-framework', 'Carbon',
 			  ],
 			},
 			"sources": [
